@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "AzureAeroHubXMLSSIS", "AzureAeroHubXMLSSIS\AzureAeroHubXMLSSIS.dtproj", "{12183FB3-D0B0-4FD4-A608-4CA3B43FFB36}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{885D5F3B-D046-4344-A090-7E03B56F9042}"
+	ProjectSection(SolutionItems) = preProject
+		\\file01\layout_reports\Data Automation Repos\Shared\AeroHubXMLFiles\AerohubLinkData.xml = \\file01\layout_reports\Data Automation Repos\Shared\AeroHubXMLFiles\AerohubLinkData.xml
+		\\file01\layout_reports\Data Automation Repos\Shared\AeroHubXMLFiles\AerohubSchema.xsd = \\file01\layout_reports\Data Automation Repos\Shared\AeroHubXMLFiles\AerohubSchema.xsd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Azure|Default = Azure|Default
