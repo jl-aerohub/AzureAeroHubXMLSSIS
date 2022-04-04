@@ -1,0 +1,1215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This document is part of QIF 2.1, an open, industry-wide standard -->
+<!-- established by the Dimensional Metrology Standards Consortium.    -->
+<!-- This document shall not be used in any manner to claim any        -->
+<!-- proprietary rights to such information, such as rights to a       -->
+<!-- patent, trademark, or copyright.                                  -->
+
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://qifstandards.org/xsd/qif3"
+  xmlns:t="http://qifstandards.org/xsd/qif3"
+  targetNamespace="http://qifstandards.org/xsd/qif3"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="3.0.0">
+
+    <xs:annotation>
+        <xs:documentation>
+            The Aerohub.xsd schema file defines types that are used to generate
+            file link locations for data located in Azure Blob storage.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name = "AerohubLinkData" type="AerohubLinkDataSet">
+	</xs:element>
+
+    <xs:complexType name="AerohubLinkDataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Highest level data structure for Aerohub containing all different data package types linked in a MFIN file
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DesignIterationGroup" type ="DesignIterationSet"/>
+            <xs:element name="DesignGateGroup" type ="DesignGateSet"/>
+            <xs:element name="RFQGroup" type ="RFQSet"/>
+            <xs:element name="QuotationGroup" type ="QuotationSet"/>
+            <xs:element name="PurchaseOrderGroup" type ="PurchaseOrderSet"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DesignIterationSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="StressReportSet" type ="StressReportSet"/>
+            <xs:element name ="ThermalReportSet" type ="ThermalReportSet"/>
+            <xs:element name ="RelevantDataSet" type ="RelevantReportSet"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="StressReportSet">
+        <xs:annotation>
+            <xs:documentation>
+            Placeholder
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="StressReportByMesh" type ="MeshType"/>
+            <xs:element name ="StressReportMaster" type ="MetaDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="ThermalReportSet">
+        <xs:annotation>
+            <xs:documentation>
+            Placeholder
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="ThermalReportByMesh" type ="MeshType"/>
+            <xs:element name ="ThermalReportMaster" type ="MetaDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="RelevantReportSet">
+        <xs:annotation>
+            <xs:documentation>
+            Placeholder
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="RelevantReportByMesh" type ="MeshType"/>
+            <xs:element name ="RelevantReportMaster" type ="MetaDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="MeshType">
+        <xs:annotation>
+            <xs:documentation>
+            Placeholder
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="Mesh" type ="MeshReportType"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="MeshReportType">
+        <xs:annotation>
+            <xs:documentation>
+            Placeholder
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="MeshFileLink" type ="xs:string"/>
+            <xs:element name ="MeshMasterReport" type ="MetaDataSet"/>
+            <xs:element name ="MeshReportSet" type ="ReportType"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="ReportType">
+        <xs:annotation>
+            <xs:documentation>
+            Placeholder
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="MeshReport" type ="MetaDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="DesignGateSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="DesignGatePresentationSet" type ="DesignGatePresentationSet"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DesignGatePresentationSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="DesignGatePresentation" type ="PresentationDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="PresentationDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Signatures" type="TrueFalse">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+                <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="RFQSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="RFQSet" type ="RFQType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RFQType">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="RFQFile" type ="RFQDataSet" />
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="RFQDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SOWSet" type="SOWType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+                <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="SOWType">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="SOW" type ="SOWDataSet" />
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="SOWDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AttachedFileSet" type="AttachedDataSet">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+                <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="AttachedDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="AttachedFile" type="MetaDataSet">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+	</xs:complexType>
+
+    <xs:complexType name="QuotationSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="QuotationSet" type ="QuotationType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="QuotationType">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="Quotation" type ="QuotationDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="QuotationDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>	
+            <xs:element name="CCW" type="MetaDataSet">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+                <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="PurchaseOrderSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="PurchaseOrderSet" type ="PurchaseOrderType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PurchaseOrderType">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="PurchaseOrder" type ="PurchaseOrderDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+     <xs:complexType name="PurchaseOrderDataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+            <xs:element name ="NDASet" type ="NDASet"/>
+            <xs:element name ="IPDocumentSet" type ="IPDocumentSet"/>
+            <xs:element name ="LTAContractSet" type ="LTAContractSet"/>
+            <xs:element name ="MVAFPAOriginalSubmission" type ="MVAFPAOriginalSubmissionDataSet"/>
+            <xs:element name ="MVARelatedSet" type ="MVARelatedSet"/>
+            <xs:element name ="FAIRSubmission" type ="FAIRSubmissionDataSet"/>
+            <xs:element name ="FAIRRevisionSet" type ="FAIRRevisionSet"/>
+            <xs:element name ="OverhaulAssessmentSet" type ="OverhaulAssessmentSet"/>
+            <xs:element name ="RepairMethodSet" type ="RepairMethodSet"/>
+            <xs:element name ="ContinuingLifecycleDataSet" type ="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="NDASet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="NDA" type ="NDADataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="NDADataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NDANumber" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SupplierName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="IPDocumentSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="IPDocument" type ="IPDocumentDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="IPDocumentDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="IPDocumentNumber" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="LTAContractSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="LTAContract" type ="LTADataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="LTADataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="LTADocumentNumber" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="MVAFPAOriginalSubmissionDataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+         <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="MVADocumentNumber" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="SupplierDocumentNumber" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="MVARelatedSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="CurrentMVA" type ="CurrentMVASet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="CurrentMVASet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="MVANumber" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+            <xs:element name ="Program" type ="BasicMVADataSet"/>
+            <xs:element name ="MOM" type ="BasicMVADataSet"/>
+            <xs:element name ="LotProgram" type ="BasicMVADataSet"/>
+            <xs:element name ="FPDSet" type ="AdvancedMVADataSet"/>
+            <xs:element name ="DataCardSet" type ="AdvancedMVADataSet"/>
+            <xs:element name ="ApprovedDocumentSet" type ="AdvancedMVADataSet"/>
+            <xs:element name ="ReportSet" type ="AdvancedMVADataSet"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="AdvancedMVADataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="File" type ="BasicMVADataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="BasicMVADataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string"/>
+            <xs:element name="SupplierName" type="xs:string"/>
+            <xs:element name="MVANumber" type="xs:string"/>
+            <xs:element name="MetaData" type="MetaDataType"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="FAIRSubmissionDataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string"/>
+            <xs:element name="SupplierName" type="xs:string"/>
+            <xs:element name="SupplierDocumentNumber" type="xs:string"/>
+            <xs:element name="MetaData" type="MetaDataType"/>
+            <xs:element name="SupportingDocumentSet" type="FAIRSupportingSet"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="FAIRSupportingSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="FAIRSupportingDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+    <xs:complexType name="FAIRSupportingDataSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string"/>
+            <xs:element name="SupplierName" type="xs:string"/>
+            <xs:element name="SupplierDocumentNumber" type="xs:string"/>
+            <xs:element name="MetaData" type="MetaDataType"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="FAIRRevisionSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FAIRRevision" type ="FAIRRevisionDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+     <xs:complexType name="FAIRRevisionDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="SupplierDocumentNumber" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+            <xs:element name ="FAIRApproval" type ="FAIRApprovalDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="FAIRApprovalDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="SupplierDocumentNumber" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="OverhaulAssessmentSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="OverhaulAssessment" type ="OverhaulAssessmentDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+     <xs:complexType name="OverhaulAssessmentDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="EngineSerialNumber" type ="xs:string"/>
+            <xs:element name ="EngineOperator" type ="xs:string"/>
+            <xs:element name ="OverhaulDate" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+            <xs:element name ="OverhaulDataSet" type ="OverhaulDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="OverhaulDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="OverhaulDataSet" type ="OverhaulDatatype"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="OverhaulDatatype">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="EngineSerialNumber" type ="xs:string"/>
+            <xs:element name ="EngineOperator" type ="xs:string"/>
+            <xs:element name ="OverhaulDate" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="RepairMethodSet">
+        <xs:annotation>
+            <xs:documentation>
+            Places for each data package type in Aerohub
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name ="RepairMethod" type ="RepairMethodDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>	
+    </xs:complexType>
+
+     <xs:complexType name="RepairMethodDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="SupplierName" type ="xs:string"/>
+            <xs:element name ="ProcessNumber" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+            <xs:element name ="DevelopmentDataSet" type ="DevelopmentDataSet"/>
+            <xs:element name ="RepairReportDataSet" type ="RepairReportDataSet"/>
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="DevelopmentDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="DevelopmentDataSet" type ="DevelopmentDatatype"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+     <xs:complexType name="RepairReportDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="RepairReportDataSet" type ="DevelopmentDatatype"/>
+        </xs:sequence>
+        <xs:attribute name="n"
+			type="NaturalType"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>
+				The required n attribute is the counter number of such Analysis Links AnalysisLinkSet.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="DevelopmentDatatype">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name ="FileLink" type ="xs:string"/>
+            <xs:element name ="MetaData" type ="MetaDataType"/>	
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="MetaDataSet">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileLink" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores Link to attached Data
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MetaData" type="MetaDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+        <xs:attribute name="FileName"
+				type="xs:string"
+				use="required">
+		</xs:attribute>
+        <xs:attribute name="id"
+				type="QIFIdType"
+				use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="MetaDataType">
+		<xs:annotation>
+            <xs:documentation>
+            This element describes the file description structure.
+            </xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="PartNumber" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Part Number
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="User" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the User ID when the file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+            <xs:element name="DateTime" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                    Stores the Date/Time file was uploaded
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>		
+        </xs:sequence>
+	</xs:complexType>
+
+    <xs:simpleType name="NaturalType">
+        <xs:annotation>
+            <xs:documentation>
+            The NaturalType is the natural number type (integer > 0).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:unsignedInt">
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QIFIdType">
+        <xs:annotation>
+        <xs:documentation>
+            The QIFIdType defines an unsigned integer with no leading zeros.
+            All 'id' attributes in all QIF schema files are of QIFIdType.
+        </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:unsignedInt">
+        <xs:pattern value="[1-9][0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TrueFalse">
+        <xs:annotation>
+        <xs:documentation>
+        
+        </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+        <xs:enumeration value="Yes"/>
+        <xs:enumeration value="No"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
