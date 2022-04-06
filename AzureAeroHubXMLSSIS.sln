@@ -10,8 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		AeroHubXMLFiles\AeroHub_QIF_Files\23064591_E_QIF30.qif = AeroHubXMLFiles\AeroHub_QIF_Files\23064591_E_QIF30.qif
 		AeroHubXMLFiles\AeroHub_QIF_Files\23094535_F_QIF30.qif = AeroHubXMLFiles\AeroHub_QIF_Files\23094535_F_QIF30.qif
 		AeroHubXMLFiles\AeroHub_QIF_Files\23094547_F_QIF30.qif = AeroHubXMLFiles\AeroHub_QIF_Files\23094547_F_QIF30.qif
-		AeroHubXMLFiles\AerohubLinkData.xml = AeroHubXMLFiles\AerohubLinkData.xml
-		AeroHubXMLFiles\AerohubSchema.xsd = AeroHubXMLFiles\AerohubSchema.xsd
+		AeroHubXMLFiles\AerohubLinkDataV2.xml = AeroHubXMLFiles\AerohubLinkDataV2.xml
+		AeroHubXMLFiles\AerohubSchemaV2.xsd = AeroHubXMLFiles\AerohubSchemaV2.xsd
 	EndProjectSection
 EndProject
 Global
